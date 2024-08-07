@@ -1,4 +1,3 @@
-// src/MyLayout.tsx
 import React from "react";
 import { Layout, LayoutProps } from "react-admin";
 import MyMenu from "./MyMenu";
