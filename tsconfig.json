@@ -1,18 +1,20 @@
 {
   "compilerOptions": {
-    "target": "es6", // Hoặc phiên bản ECMAScript bạn cần
-    "module": "commonjs", // Hoặc hệ thống module bạn đang sử dụng
-    "jsx": "react-jsx", // Bật hỗ trợ JSX
-    "baseUrl": "./src", // Đặt baseUrl thành thư mục gốc của mã nguồn
+    "target": "es6",
+    "module": "commonjs",
+    "jsx": "react-jsx",
+    "baseUrl": "./src",
     "paths": {
-      "@layouts/*": ["layouts/*"], // Alias cho thư mục layouts
-      "@components/*": ["components/*"] // Alias cho thư mục components
+      "@layouts/*": ["layouts/*"],
+      "@components/*": ["components/*"],
+      "@config/*": ["config/*"],
+      "@style/*": ["style/*"]
     },
-    "strict": true, // Bật các kiểm tra nghiêm ngặt
-    "esModuleInterop": true // Để hỗ trợ import các module CommonJS
+    "strict": true,
+    "esModuleInterop": true
   },
-  "include": ["src/**/*"], // Bao gồm tất cả các file trong thư mục src
-  "exclude": ["node_modules"], // Loại trừ thư mục node_modules
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"],
   "moduleResolution": "node",
   "esModuleInterop": true,
   "skipLibCheck": true,

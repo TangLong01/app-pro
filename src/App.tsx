@@ -1,24 +1,27 @@
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import ExpenseCreate from "@components/expenses/ExpensesCreate";
+import ExpenseEdit from "@components/expenses/ExpensesEdit";
+import ExpensesList from "@components/expenses/ExpensesList";
+import dataProvider from "@config/dataProvider";
+import darkTheme from "@config/theme";
+import MainLayout from "@layouts/MainLayout";
+import { ThemeProvider } from "@mui/material/styles";
+import "@style/App.css";
+import React from "react";
 import { Admin, Resource } from "react-admin";
-import "./App.css";
-import CommentList from "./CommentList";
-import dataProvider from "./config/dataProvider";
-import PostList from "./PopList";
-import MyLayout from "./layouts/MyLayout";
 
-const theme = createTheme({
-  palette: {
-    mode: "dark",
-  },
-});
-
-const App = () => (
-  <ThemeProvider theme={theme}>
-    <Admin layout={MyLayout} dataProvider={dataProvider} theme={theme}>
-      <Resource name="posts" list={PostList} />
-      <Resource name="comments" list={CommentList} />
-    </Admin>
-  </ThemeProvider>
-);
+const App: React.FC = () => {
+  return (
+    <ThemeProvider theme={darkTheme}>
+      <Admin layout={MainLayout} dataProvider={dataProvider} theme={darkTheme}>
+        <Resource
+          name="expenses"
+          list={ExpensesList}
+          create={ExpenseCreate}
+          edit={ExpenseEdit}
+        />
+      </Admin>
+    </ThemeProvider>
+  );
+};
 
 export default App;
