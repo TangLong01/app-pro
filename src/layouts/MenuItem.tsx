@@ -32,50 +32,47 @@ const MenuItem: React.FC<MenuItemProps> = ({ items }) => {
     setOpen((prevOpen) => ({ ...prevOpen, [text]: !prevOpen[text] }));
   };
 
-  return (
-    <List>
-      {items.map((item) => (
-        <React.Fragment key={item.to}>
-          {item.subMenuItems ? (
-            <>
-              <ListItem button onClick={() => handleClick(item.primaryText)}>
-                <ListItemIcon sx={{ minWidth: 40 }}>
-                  {item.leftIcon}
-                </ListItemIcon>
-                <ListItemText primary={item.primaryText} />
-                {open[item.primaryText] ? <ExpandLess /> : <ExpandMore />}
-              </ListItem>
-              <Collapse
-                in={open[item.primaryText]}
-                timeout="auto"
-                unmountOnExit
-              >
-                <List component="div" disablePadding>
-                  {item.subMenuItems.map((subItem) => (
-                    <MenuItemLink
-                      key={subItem.to}
-                      to={subItem.to}
-                      primaryText={subItem.primaryText}
-                      sx={{ pl: 4, py: 1.5 }}
-                      selected={isActive(subItem.to)}
-                    />
-                  ))}
-                </List>
-              </Collapse>
-            </>
-          ) : (
-            <MenuItemLink
-              to={item.to}
-              primaryText={item.primaryText}
-              leftIcon={item.leftIcon}
-              sx={{ py: 1.5 }}
-              selected={isActive(item.to)}
-            />
-          )}
-        </React.Fragment>
-      ))}
-    </List>
+  const renderMenuItem = (item: MenuItem, level: number) => (
+    <React.Fragment key={item.to}>
+      {item.subMenuItems ? (
+        <>
+          <ListItem
+            button
+            onClick={() => handleClick(item.primaryText)}
+            sx={{ pl: level == 0 ? 2 : level * 4, py: 1.5 }}
+          >
+            <ListItemIcon sx={{ minWidth: 40, pr: level == 0 ? 2 : 0 }}>
+              {item.leftIcon}
+            </ListItemIcon>
+            <ListItemText primary={item.primaryText} />
+            {open[item.primaryText] ? <ExpandLess /> : <ExpandMore />}
+          </ListItem>
+          <Collapse in={open[item.primaryText]} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              {item.subMenuItems.map((subItem) =>
+                renderMenuItem(subItem, level + 1)
+              )}
+            </List>
+          </Collapse>
+        </>
+      ) : (
+        <ListItem
+          button
+          component={MenuItemLink}
+          to={item.to}
+          sx={{ pl: level == 0 ? 2 : level * 4, py: 1.5 }}
+          selected={isActive(item.to)}
+        >
+          <ListItemIcon sx={{ minWidth: 40, pr: level == 0 ? 2 : 0 }}>
+            {item.leftIcon}
+          </ListItemIcon>
+          <ListItemText primary={item.primaryText} />
+        </ListItem>
+      )}
+    </React.Fragment>
   );
+
+  return <List>{items.map((item) => renderMenuItem(item, 0))}</List>;
 };
 
 export default MenuItem;

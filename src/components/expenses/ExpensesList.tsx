@@ -1,24 +1,41 @@
+import CurrencyField from "@common/CurrencyField";
+import CustomDateField from "@common/CustomDateField";
 import React from "react";
 import {
-  List,
   Datagrid,
-  TextField,
-  DateField,
-  DeleteButton,
+  DateInput,
+  Filter,
+  FilterProps,
+  List,
   ListProps,
+  TextField,
+  TextInput,
 } from "react-admin";
 
-const ExpensesList: React.FC<ListProps> = (props) => (
-  <List {...props}>
-    <Datagrid>
-      <TextField source="id" />
-      <TextField source="name" />
-      <TextField source="total" />
-      <TextField source="description" />
-      <DateField source="date" />
-      <DeleteButton />
-    </Datagrid>
-  </List>
+const ExpenseFilter: React.FC<FilterProps> = (props) => (
+  <Filter {...props}>
+    <TextInput label="Description" source="description" alwaysOn />
+    <DateInput label="Start Date" source="startDate" alwaysOn />
+    <DateInput label="End Date" source="endDate" alwaysOn />
+  </Filter>
 );
+
+const ExpensesList: React.FC<ListProps> = (props) => {
+  return (
+    <List
+      {...props}
+      filters={<ExpenseFilter children={undefined} />}
+      sort={{ field: "date", order: "DESC" }}
+      perPage={50}
+    >
+      <Datagrid bulkActionButtons={false}>
+        <CustomDateField source="date" />
+        <TextField source="description" />
+        <CurrencyField source="total" />
+        {/* <DeleteButton /> */}
+      </Datagrid>
+    </List>
+  );
+};
 
 export default ExpensesList;

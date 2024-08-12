@@ -1,6 +1,8 @@
 import { createTheme } from "@mui/material/styles";
 
-const darkTheme = createTheme({
+// const defaultConfigTheme = {};
+
+export const darkTheme = createTheme({
   palette: {
     mode: "dark",
   },
@@ -10,7 +12,7 @@ const darkTheme = createTheme({
         root: {
           fontWeight: "600 !important",
           color: "#FFFFFF !important",
-          "&.Mui-selected": {
+          "& .Mui-selected": {
             color: "#EE6983 !important",
             "& .MuiSvgIcon-root": {
               color: "#EE6983 !important",
@@ -29,7 +31,7 @@ const darkTheme = createTheme({
         root: {
           fontWeight: "600 !important",
           color: "#FFFFFF !important",
-          "&.Mui-selected, &.Mui-selected:hover": {
+          "& .Mui-selected, & .Mui-selected:hover": {
             color: "#EE6983 !important",
             "& .MuiListItemIcon-root, & .MuiListItemText-root, & .MuiSvgIcon-root":
               {
@@ -56,7 +58,91 @@ const darkTheme = createTheme({
         },
       },
     },
+    MuiTableRow: {
+      styleOverrides: {
+        root: {
+          "&.MuiTableRow-hover:hover": {
+            "& .MuiTableCell-root": {
+              color: "#EE6983 !important",
+            },
+          },
+        },
+      },
+    },
+    MuiTableCell: {
+      styleOverrides: {
+        root: {
+          fontSize: "16px !important",
+        },
+      },
+    },
+    MuiButtonBase: {
+      styleOverrides: {
+        root: {
+          fontSize: "18px !important",
+        },
+      },
+    },
+    MuiTypography: {
+      styleOverrides: {
+        root: {
+          fontSize: "16px !important",
+        },
+      },
+    },
   },
 });
 
-export default darkTheme;
+export const lightTheme = createTheme({
+  palette: {
+    mode: "light",
+  },
+  components: {
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          fontWeight: "600 !important",
+        },
+      },
+    },
+    MuiListItem: {
+      styleOverrides: {
+        root: {
+          fontWeight: "600 !important",
+        },
+      },
+    },
+    MuiListItemText: {
+      styleOverrides: {
+        root: {
+          fontWeight: "600 !important",
+        },
+        primary: {
+          fontWeight: "600 !important",
+        },
+      },
+    },
+
+    MuiTableCell: {
+      styleOverrides: {
+        root: {
+          fontSize: "16px !important",
+        },
+      },
+    },
+    MuiButtonBase: {
+      styleOverrides: {
+        root: {
+          fontSize: "18px !important",
+        },
+      },
+    },
+    MuiTypography: {
+      styleOverrides: {
+        root: {
+          fontSize: "16px !important",
+        },
+      },
+    },
+  },
+});

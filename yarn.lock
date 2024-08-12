@@ -1246,7 +1246,7 @@ csstype@^3.0.2, csstype@^3.1.3:
 
 date-fns@^3.6.0:
   version "3.6.0"
-  resolved "https://registry.npmjs.org/date-fns/-/date-fns-3.6.0.tgz"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-3.6.0.tgz#f20ca4fe94f8b754951b24240676e8618c0206bf"
   integrity sha512-fRHTG8g/Gif+kSh50gaGEdToemgfj74aRX3swtiouboip5JDLAyDE9F11nHMIcvOaXeOC6D7SpNhi7uFyB7Uww==
 
 debug@^4.1.0, debug@^4.3.1, debug@^4.3.2, debug@^4.3.4:
@@ -2285,6 +2285,14 @@ ra-core@^5.1.1:
     query-string "^7.1.3"
     react-error-boundary "^4.0.13"
     react-is "^18.2.0"
+
+ra-data-json-server@^5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/ra-data-json-server/-/ra-data-json-server-5.1.1.tgz#d248eddd35394ca1c86b8d6777ed168bedb4b535"
+  integrity sha512-gWz6vVCIcVcXS+porNE47G0NxMdZxuXEpA/X1l3HAs7W/GodDYL1GAdL7biFK+rDJ+0ELkJArpdWYoWuwgKeYg==
+  dependencies:
+    query-string "^7.1.3"
+    ra-core "^5.1.1"
 
 ra-data-simple-rest@^5.1.1:
   version "5.1.1"
